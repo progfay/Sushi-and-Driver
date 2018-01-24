@@ -19,11 +19,6 @@ var (
 	db *mgo.Database
 )
 
-type jwtCustomClaims struct {
-	Name string `json:"name"`
-	jwt.StandardClaims
-}
-
 func main() {
 	e := echo.New()
 
