@@ -72,10 +72,21 @@ let vm = new Vue({
             this.isLogin = false;
         },
         getCoin(){
-            
+            axios.put("/api/coin")
+                .then( res => {
+                    this.user.coins = res.data.coins;
+                }).catch( err => {
+                    console.log(err);
+                })
         },
         getSushi(){
-
+            axios.put("/api/sushi")
+                .then( res => {
+                    this.user.coins = res.data.coins;
+                    this.user.sushi = res.data.sushi;
+                }).catch( err => {
+                    console.log(err);
+                })
         }
     }
 })

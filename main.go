@@ -38,6 +38,8 @@ func main() {
 	api := e.Group("/api")
 	api.Use(middleware.JWT([]byte(SECRET_KEY)))
 	api.GET("/user", getUser)
+	api.PUT("/coin", gainCoin)
+	api.PUT("/sushi", gainSushi)
 
 	// start server
 	e.Logger.Fatal(e.Start(":1323"))
