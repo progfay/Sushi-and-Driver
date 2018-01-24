@@ -30,3 +30,8 @@ http://www.itmedia.co.jp/news/articles/1712/01/news100.html
 - Three.jsを用いてコインを配置
   - あまり目立たないようなコインにしたい
 
+
+_____
+
+bin_for_macかbin_for_winを起動すると localhost:1323で試せます。  
+ただし、DBに使っているmongoDBをインストールして起動する必要あり
