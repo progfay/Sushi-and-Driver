@@ -32,6 +32,8 @@
             <p>coins : {{ user.coins}}</p>
             <p v-for="(value, key) in user.sushi"> {{ key }} を {{ value }} 個</p>
 
+            <button @click="getCoin">コインをゲット</button>
+            <button @click="getSushi">寿司を握る(５コイン消費)</button>
             <button @click="logout">logout</button>
         </div>
     </div>

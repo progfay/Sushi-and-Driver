@@ -70,6 +70,12 @@ let vm = new Vue({
             localStorage.removeItem("sushi-token");
             this.user = {};
             this.isLogin = false;
+        },
+        getCoin(){
+            
+        },
+        getSushi(){
+
         }
     }
 })
