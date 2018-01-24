@@ -32,6 +32,10 @@ func main() {
 
 // password auth
 // generate Token and return JWT Token as JSON
+// curl -X -d "username=hogehoge" -d "password="password" localhost:1323/login
+// =>
+//{"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.lGdlfsxfRElCCr4YaQkWsiQPtY02eQ1-P22h6QcB-jg"}
+
 func login(c echo.Context) error {
 	username := c.FormValue("username")
 	password := c.FormValue("password")
