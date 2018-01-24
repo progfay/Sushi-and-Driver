@@ -43,6 +43,7 @@ func main() {
 	e.File("/", "public/index.html")
 
 	e.POST("/login", login)
+	e.POST("/signup", signup)
 
 	api := e.Group("/api")
 	api.Use(middleware.JWT([]byte(SECRET_KEY)))
@@ -78,14 +79,14 @@ func login(c echo.Context) error {
 	if ld.Name == user.Name && ld.Password == user.Password {
 		token := jwt.New(jwt.SigningMethodHS256)
 
+		claims := token.Claims.(jwt.MapClaims)
+		claims["name"] = ld.Name
+		claims["exp"] = time.Now().Add(time.Hour * 72).Unix()
+
 		t, err := token.SignedString([]byte(SECRET_KEY))
 		if err != nil {
 			return err
 		}
-
-		claims := token.Claims.(jwt.MapClaims)
-		claims["name"] = ld.Name
-		claims["exp"] = time.Now().Add(time.Hour * 72).Unix()
 
 		return c.JSON(http.StatusOK, map[string]string{
 			"token": t,

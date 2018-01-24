@@ -3,14 +3,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/public/style.css">
     <title>🍣 and Driver</title>
 </head>
 <body>
-    <div id="app">
-        <h1>Please Login</h1>
+    <div id="app" v-cloak>
+        <div id="login" v-if="!isLogin">
+            <h1>Sushi and Driver</h1>
+            <h2>log in</h2>
+                <label> Name : </label>
+                <input type="text" v-model="loginData.name">
+                <label> Password : </label>
+                <input type="password" v-model="loginData.password">
+                <button @click="login">log in</button>
+            <hr>
 
+            <h2>sign up</h2>
+                <label >Name : </label>
+                <input type="text" v-model="signupData.name">
+                <label >Password : </label>
+                <input type="password" v-model="signupData.password">
+                <button @click="signup">sign up</button>
+            <hr>
+        </div>
 
+        <div id="home" v-if="isLogin">
+            <p>your name is {{ user.name }}</p>
+            <p>coins : {{ user.coins}}</p>
+            <p v-for="(value, key) in user.sushi"> {{ key }} を {{ value }} 個</p>
+
+            <button @click="logout">logout</button>
+        </div>
     </div>
+    <script src="/public/lib/axios.min.js"></script>
     <script src="/public/lib/vue.min.js"></script>
     <script src="/public/main.js"></script>
 </body>
