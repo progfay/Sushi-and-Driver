@@ -27,10 +27,10 @@ func main() {
 	e.Use(middleware.Recover())
 
 	// Static Files
-	e.Static("/public", "public")
+	e.Static("/public", "../public")
 
 	// routing
-	e.File("/", "public/index.html")
+	e.File("/", "../public/index.html")
 
 	e.POST("/login", login)
 	e.POST("/signup", signup)
