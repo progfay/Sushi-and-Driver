@@ -1,4 +1,5 @@
-var rec = new webkitSpeechRecognition();
+var SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
+var rec = new SpeechRecognition();
 rec.continuous = false;
 rec.interimResults = false;
 rec.lang = 'ja-JP';
@@ -18,3 +19,7 @@ rec.onresult = function(e) {
 rec.onend = () => { rec.start() };
 
 rec.start();
+
+function listenStop() {
+    rec.stop();
+}
