@@ -16,15 +16,12 @@ rec.onresult = function(e) {
     }
 }
 
-rec.onend = () => { rec.start() };
-
-// rec.start();
-
-function listenStart() {
-    rec.start();
-}
-
 function listenStop() {
+    rec.onend = null;
     rec.stop();
 }
 
+function listenStart() {
+    rec.onend = () => { rec.start() };
+    rec.start();
+}
