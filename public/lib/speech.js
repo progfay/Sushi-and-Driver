@@ -18,12 +18,13 @@ rec.onresult = function(e) {
 
 rec.onend = () => { rec.start() };
 
-rec.start();
+// rec.start();
+
+function listenStart() {
+    rec.start();
+}
 
 function listenStop() {
     rec.stop();
 }
 
-function listenStart() {
-    rec.start();
-}

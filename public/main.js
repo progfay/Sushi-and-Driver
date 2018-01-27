@@ -1,3 +1,21 @@
+console.log(hiyari);
+
+
+const VSS_SPEED  = 'Signal.Drivetrain.Transmission.Speed',
+      VISS_IP = '52.200.145.70',
+      VISS_PORT='3001',
+      ROOM_ID = 'Turtle';
+
+const viscOption = {
+  'host': VISS_IP
+  ,'protocol': 'ws://'
+  ,'port': VISS_PORT
+  ,'roomId': ROOM_ID
+};
+
+var vias = new VISClient( viscOption );
+
+
 let vm = new Vue({
     el : "#app",
     data : {
@@ -87,7 +105,15 @@ let vm = new Vue({
                     this.user.sushi = res.data.sushi;
                 }).catch( err => {
                     console.log(err);
-                })
+                });
+        },
+        startDrive(){
+            listenStart();
+            this.isDriving = true;
+        },
+        stopDrive(){
+            listenStop();
+            this.isDriving = false;
         }
     }
-})
+});

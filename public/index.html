@@ -33,7 +33,7 @@
                 <p>coins : {{ user.coins }}</p>
                 <p v-for="(value, key) in user.sushi"> {{ key }} を {{ value }} 個</p>
 
-                <button @click="isDriving = true">ドライブを開始する</button>
+                <button @click="startDrive">ドライブを開始する</button>
                 <button @click="getCoin">コインをゲット</button>
                 <button @click="getSushi">寿司を握る(５コイン消費)</button>
                 <button @click="logout">logout</button>
@@ -42,12 +42,15 @@
             <div v-if="isDriving">
 
 
-                <button @click="isDriving = false">ドライブをやめる</button>
+                <button @click="stopDrive">ドライブをやめる</button>
             </div>
         </div>
     </div>
     <script src="/public/lib/axios.min.js"></script>
     <script src="/public/lib/vue.min.js"></script>
+    <script src="js/vias_h2018.js"></script>
+    <script src="/public/lib/speech.js"></script>
+    <script src="/public/hiyari.js"></script>
     <script src="/public/main.js"></script>
 </body>
 </html>
