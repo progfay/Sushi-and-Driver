@@ -3,6 +3,7 @@ let vm = new Vue({
     data : {
         message : "hello world",
         isLogin : false,
+        isDriving : false,
         token : "",
         user : {
             name : "",
@@ -77,7 +78,7 @@ let vm = new Vue({
                     this.user.coins = res.data.coins;
                 }).catch( err => {
                     console.log(err);
-                })
+                });
         },
         getSushi(){
             axios.put("/api/sushi")

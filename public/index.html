@@ -28,13 +28,22 @@
         </div>
 
         <div id="home" v-if="isLogin">
-            <p>your name is {{ user.name }}</p>
-            <p>coins : {{ user.coins }}</p>
-            <p v-for="(value, key) in user.sushi"> {{ key }} を {{ value }} 個</p>
+            <div v-if="!isDriving">
+                <p>your name is {{ user.name }}</p>
+                <p>coins : {{ user.coins }}</p>
+                <p v-for="(value, key) in user.sushi"> {{ key }} を {{ value }} 個</p>
 
-            <button @click="getCoin">コインをゲット</button>
-            <button @click="getSushi">寿司を握る(５コイン消費)</button>
-            <button @click="logout">logout</button>
+                <button @click="isDriving = true">ドライブを開始する</button>
+                <button @click="getCoin">コインをゲット</button>
+                <button @click="getSushi">寿司を握る(５コイン消費)</button>
+                <button @click="logout">logout</button>
+            </div>
+
+            <div v-if="isDriving">
+
+
+                <button @click="isDriving = false">ドライブをやめる</button>
+            </div>
         </div>
     </div>
     <script src="/public/lib/axios.min.js"></script>
