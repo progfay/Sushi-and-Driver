@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title> VIAS Map sample (subscribe) </title>
+
+<!-- Map -->
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+<script type="text/javascript" src="./js/map.js"></script>
+<style>
+  #map{
+      width:500px;
+      height:430px;
+  }
+</style>
+</head>
+
+<body onload="initMap(); ">
+<div>VehicleSpeed:<span id="VehicleSpeed"> </span> [km/h]</div>
+<div>EngineSpeed:<span id="RPM"> </span> [rpm]</div>
+<div>Latitude:<span id="Latitude"> </span></div>
+<div>Longitude:<span id="Longitude"> </span></div>
+<div id="map"></div>
+
+</body>
+<!-- 設定 -->
+<script src="js/vias_h2018.js"></script>
+<script>
+var VSS_SPEED     = 'Signal.Drivetrain.Transmission.Speed';
+var VSS_RPM       = 'Signal.Drivetrain.InternalCombustionEngine.RPM';
+var VSS_LATITUDE  = 'Signal.Cabin.Infortainment.Navigation.Currentlocation.Latitude';
+var VSS_LONGITUDE = 'Signal.Cabin.Infortainment.Navigation.Currentlocation.Longitude';
+var VISS_IP = '52.91.85.165';
+var VISS_PORT='3001';
+var ROOM_ID = '0100';
+const viscOption = {
+  'host': VISS_IP
+  ,'protocol': 'ws://'
+  ,'port': VISS_PORT
+  ,'roomId': ROOM_ID
+};
+// 設定ここまで
+
+var gVehicleSpeed = 0;
+var gRPM          = 0;
+var gLatitude     = 0;
+var gLongitude    = 0;
+
+// == Subscribe sample ==
+// Subscribeはcallback方式
+var vias = new VISClient( viscOption );
+console.log("Try to connect to VISServer");
+vias.connect( () => {
+  console.log("Connected");
+  vias.subscribe(VSS_SPEED,
+    function(_val) {
+      gVehicleSpeed = Math.floor(_val /1000);
+      document.getElementById("VehicleSpeed").innerHTML = gVehicleSpeed;
+    });
+  vias.subscribe(VSS_RPM,
+    function(_val) {
+      gRPM = _val;
+      document.getElementById("RPM").innerHTML = gRPM;
+    });
+  vias.subscribe(VSS_LATITUDE,
+    function(_val) {
+      gLatitude = _val;
+      document.getElementById("Latitude").innerHTML = gLatitude;
+      addMarker2(gVehicleSpeed, gRPM, gLatitude, gLongitude);
+    });
+  vias.subscribe(VSS_LONGITUDE,
+    function(_val) {
+      gLongitude = _val;
+      document.getElementById("Longitude").innerHTML = gLongitude;
+      addMarker2(gVehicleSpeed, gRPM, gLatitude, gLongitude);
+    });
+},
+(_err) => {
+  // Connect error
+  document.getElementById("VehicleSpeed").innerHTML = "connection error";
+});
+</script>
+</html>
