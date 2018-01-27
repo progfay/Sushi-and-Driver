@@ -29,7 +29,7 @@
 
         <div id="home" v-if="isLogin">
             <p>your name is {{ user.name }}</p>
-            <p>coins : {{ user.coins}}</p>
+            <p>coins : {{ user.coins }}</p>
             <p v-for="(value, key) in user.sushi"> {{ key }} を {{ value }} 個</p>
 
             <button @click="getCoin">コインをゲット</button>
