@@ -9,8 +9,19 @@ var speed = 50;
 //scene
 var scene = new THREE.Scene();
 
-var width = 600;
-var height = 400;
+var $w = $(window),
+    bw = 1200,
+    bh = (bw / 16) * 9,
+    w = $w.width(),
+    h = $w.height(),
+    width = w,
+    height = Math.round(bh * (width / bw));
+
+if (height < h) {
+    height = h;
+    width = Math.round(bw * (height / bh));
+}
+
 var fov = 60;
 var aspect = width / height;
 var near = 1;
