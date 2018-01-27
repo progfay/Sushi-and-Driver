@@ -1,72 +1,80 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>Tes</title>
-  <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
-  <script src="js/three.min.js"></script>
-  <style>
-  html {
-    width: 100%;
-    height: 100%;
-  }
-  body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    -webkit-text-size-adjust: 100%;
-    background: #dd7777;
-  }
-  #field {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    min-height: 100%;
-    overflow: hidden;
-    z-index: 50;
-  }
-  #wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    min-height: 100%;
-    overflow: hidden;
-  }
-  #player {
-    position: absolute;
-    z-index: 0;
-  }
 
-  #player_cover {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
-  }
-  #loader {
-    background: #000 url("http://jsrun.it/assets/K/1/9/U/K19UZ.gif") no-repeat center center;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-  }
-  </style>
-  <script src="readyIframe.js"></script>
+<head>
+    <meta charset="utf-8">
+    <title>Tes</title>
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/three.min.js"></script>
+    <style>
+        html {
+            width: 100%;
+            height: 100%;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            -webkit-text-size-adjust: 100%;
+            background: #dd7777;
+        }
+        
+        #field {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            min-height: 100%;
+            overflow: hidden;
+            z-index: 50;
+        }
+        
+        #wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            min-height: 100%;
+            overflow: hidden;
+        }
+        
+        #player {
+            position: absolute;
+            z-index: 0;
+        }
+        
+        #player_cover {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1;
+        }
+        
+        #loader {
+            background: #000 url("http://jsrun.it/assets/K/1/9/U/K19UZ.gif") no-repeat center center;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+    <script src="readyIframe.js"></script>
 </head>
+
 <body>
-  <div id="field"></div>
-  <div id="wrapper">
-    <div id="player"></div>
-    <div id="player_cover">
-      <div id="loader"></div>
+    <div id="field"></div>
+    <div id="wrapper">
+        <div id="player"></div>
+        <div id="player_cover">
+            <div id="loader"></div>
+        </div>
     </div>
-  </div>
-  <script src="./sketch.js"></script>
+    <script src="./sketch.js"></script>
 </body>
+
 </html>
