@@ -2,6 +2,17 @@
     visibility : hidden;
 }
 
+
+head{
+    border-radius:10px;
+}
+
+header{
+    margin-right:20%;
+    margin-left:20%;
+    border-radius:10px;
+}
+
 body{
   font-family: arial;
   text-align: center;
@@ -16,6 +27,19 @@ h1{
 
 h2{
     color:#00b0f0;
+}
+
+
+img.header{
+    width:30px;
+    height:30px;
+    margin-top:5px;
+}
+
+img.title{
+    width:100%;
+    margin-top:5px;
+    margin-bottom:20px;
 }
 
 #app{
