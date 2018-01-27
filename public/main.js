@@ -112,10 +112,16 @@ let vm = new Vue({
         },
         startDrive(){
             listenStart();
+            let lat = 0;
+            let lon = 0;
             vias.connect().then(() => {
-                return vias.get(VSS_SPEED);
+                return vias.get(GPS_LATITUDE);
               }).then( val => {
-
+                  lat = val;
+                  return vias.get(GPS_LONGITUDE);
+              }).then( val => {
+                  lon = val;
+                  
               }).catch( err => {
               });
             this.isDriving = true;
