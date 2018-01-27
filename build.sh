@@ -1,4 +1,4 @@
-GOOS=windows GOARCH=amd64 go build -o ./bin/bin_for_win ./dev/*.go 
+GOOS=windows GOARCH=amd64 go build -o ./bin/bin_for_win.exe ./dev/*.go 
 
 GOOS=darwin GOARCH=amd64 go build -o ./bin/bin_for_mac ./dev/*.go 
 

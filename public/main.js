@@ -121,7 +121,8 @@ let vm = new Vue({
                   return vias.get(GPS_LONGITUDE);
               }).then( val => {
                   lon = val;
-                  
+                  console.log(lat,lon);
+                  this.isDriving = true;
               }).catch( err => {
               });
             this.isDriving = true;
