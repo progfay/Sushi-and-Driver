@@ -2,9 +2,11 @@ console.log(hiyari);
 
 
 const VSS_SPEED  = 'Signal.Drivetrain.Transmission.Speed',
-      VISS_IP = '52.200.145.70',
-      VISS_PORT='3001',
-      ROOM_ID = 'Turtle';
+      GPS_LATITUDE  = 'Signal.Cabin.Infortainment.Navigation.Currentlocation.Latitude',
+      GPS_LONGITUDE = 'Signal.Cabin.Infortainment.Navigation.Currentlocation.Longitude',
+      VISS_IP    = '52.200.145.70',
+      VISS_PORT  = '3001',
+      ROOM_ID    = 'Turtle';
 
 const viscOption = {
   'host': VISS_IP
@@ -15,6 +17,7 @@ const viscOption = {
 
 var vias = new VISClient( viscOption );
 
+let hiyariPoints = [];
 
 let vm = new Vue({
     el : "#app",
@@ -109,6 +112,12 @@ let vm = new Vue({
         },
         startDrive(){
             listenStart();
+            vias.connect().then(() => {
+                return vias.get(VSS_SPEED);
+              }).then( val => {
+
+              }).catch( err => {
+              });
             this.isDriving = true;
         },
         stopDrive(){

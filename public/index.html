@@ -13,16 +13,20 @@
             <h2>log in</h2>
                 <label> Name : </label>
                 <input type="text" v-model="loginData.name">
+                <br>
                 <label> Password : </label>
                 <input type="password" v-model="loginData.password">
+                <br>
                 <button @click="login">log in</button>
             <hr>
 
             <h2>sign up</h2>
                 <label >Name : </label>
                 <input type="text" v-model="signupData.name">
+                <br>
                 <label >Password : </label>
                 <input type="password" v-model="signupData.password">
+                <br>
                 <button @click="signup">sign up</button>
             <hr>
         </div>
@@ -48,7 +52,7 @@
     </div>
     <script src="/public/lib/axios.min.js"></script>
     <script src="/public/lib/vue.min.js"></script>
-    <script src="js/vias_h2018.js"></script>
+    <script src="/public/js/vias_h2018.js"></script>
     <script src="/public/lib/speech.js"></script>
     <script src="/public/hiyari.js"></script>
     <script src="/public/main.js"></script>
