@@ -23,3 +23,7 @@ rec.start();
 function listenStop() {
     rec.stop();
 }
+
+function listenStart() {
+    rec.start();
+}
