@@ -1,10 +1,3 @@
-//System
-// var frameCount = 0;
-
-//------------------------------------------------------
-// car
-
-//------------------------------------------------------
 // scene
 var scene = new THREE.Scene();
 
@@ -45,7 +38,6 @@ var spawnTimer = 5;
 const SPAWN_COUNT = 5;
 
 function addCoin() {
-    console.log("add coin");
     coin = getCoinMesh(getRandomInt(-width / 4, width / 4), getRandomInt(-height / 4, height / 4), -10000);
     scene.add(coin);
 }
@@ -62,8 +54,8 @@ function isCoinExist() {
 
 //------------------------------------------------------
 //loop
-
 let speed = 50000;
+let isRendering = true;
 
 (function renderLoop() {
     requestAnimationFrame(renderLoop);
@@ -77,11 +69,24 @@ let speed = 50000;
         coin.position.z += speed * 0.0005556;
     }
     spawnTimer--;
+    if (!isRendering) return;
     renderer.render(scene, camera);
 })();
 
+function renderStop() {
+    isRendering = false;
+    renderer.domElement.style.display = 'hidden';
+}
+
+function renderStart() {
+    isRendering = true;
+    renderer.domElement.style.display = 'display';
+    renderLoop();
+}
+
 //------------------------------------------------------
 // functions
+
 // var texloader = new THREE.TextureLoader();
 // texloader.crossOrigin = 'anonymous';
 // var coinTexture = texloader.load('./coin.png');
