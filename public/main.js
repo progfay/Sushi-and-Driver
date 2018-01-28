@@ -31,6 +31,10 @@ let vm = new Vue({
             coins : "",
             sushi : {}
         },
+        car : {
+            lat : 0,
+            lon : 0
+        },
         loginData : {
             name : "",
             password : ""
@@ -51,6 +55,26 @@ let vm = new Vue({
             }).catch( err => {
                 console.log(err);
             });
+
+        vias.connect( () => {
+            vias.subscribe(VSS_SPEED, val => {
+                    this.car.speed = val;
+                }, err => { console.log(err);
+            });
+            vias.subscribe(GPS_LATITUDE, val => {
+                    this.car.lat = val;
+                }, err => { console.log(err);
+            });
+            vias.subscribe(GPS_LONGITUDE, val => {
+                    this.car.lon = val;
+                }, err => { console.log(err);
+            });
+              },
+              (_err) => {
+                // Connect error
+                document.getElementById("VehicleSpeed").innerHTML = "connection error";
+              });
+        
     },
     methods : {
         login(){
@@ -112,24 +136,23 @@ let vm = new Vue({
         },
         startDrive(){
             listenStart();
-            let lat = 0;
-            let lon = 0;
-            vias.connect().then(() => {
-                return vias.get(GPS_LATITUDE);
-              }).then( val => {
-                  lat = val;
-                  return vias.get(GPS_LONGITUDE);
-              }).then( val => {
-                  lon = val;
-                  console.log(lat,lon);
-                  this.isDriving = true;
-              }).catch( err => {
-              });
+            console.log(this.car.lat, this.car.lon, this.car.speed);
+
+            let lat = this.car.lat;
+            let lon = this.car.lon;
+
+            hiyariPoints = hiyari.result.list.filter( pos => (pos.latitude > lat - 0.5 &&  pos.latitude < lat + 0.5 && pos.longitude > lon - 0.5 && pos.longitude < lon + 0.5));
+            console.log(hiyariPoints);
             this.isDriving = true;
         },
         stopDrive(){
             listenStop();
             this.isDriving = false;
+        },
+        nearHiyari(near){
+            let lat = this.car.lat;
+            let lon = this.car.lon;
+            return hiyariPoints.filter( pos => (pos.latitude > lat - near &&  pos.latitude < lat + near && pos.longitude > lon - near && pos.longitude < lon + near)).length;
         }
     }
 });

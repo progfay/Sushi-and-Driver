@@ -13,3 +13,10 @@ type (
 		Sushi    map[string]int `json:"sushi" bson:"sushi"`
 	}
 )
+
+type (
+	Sushi struct {
+		Name string `json:"name" bson:"sushi`
+		Url  string `json:"url" bson:"url`
+	}
+)

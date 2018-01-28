@@ -10,8 +10,10 @@ rec.onresult = function(e) {
     rec.stop();
     for (var i = e.resultIndex; i < e.results.length; ++i) {
         if (e.results[i].isFinal && searchStr.test(e.results[i][0].transcript)) {
-            console.log(e.results[i][0].transcript);
-            vm.getCoin();
+            if(isCoinexist()){
+                foundCoin();
+                vm.getCoin();
+            }
         }
     }
 }

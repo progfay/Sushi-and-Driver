@@ -65,6 +65,10 @@ function foundCoin() {
     spawnTimer = SPAWN_COUNT;
 }
 
+function isCoinexist(){
+    return !!coin;
+}
+
 // setInterval(addCoin, 1000);
 
 //------------------------------------------------------

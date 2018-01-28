@@ -37,7 +37,7 @@
         </div>
 
         <div id="home" v-if="isLogin">
-            <div v-if="">
+            <div v-if="!isDriving">
                 <p>your name is {{ user.name }}</p>
                 <p>coins : {{ user.coins }}</p>
                 <p v-for="(value, key) in user.sushi"> {{ key }} を {{ value }} 個</p>
@@ -49,6 +49,10 @@
             </div>
 
             <div v-if="isDriving">
+                <p> 0.001 10メートル範囲  {{ nearHiyari(0.001) }}</p>
+                <p> 0.005 50メートル範囲  {{ nearHiyari(0.005) }}</p>
+                <p> 0.010 100メートル範囲 {{ nearHiyari(0.01) }}</p>
+                <p> 0.050 500メートル範囲　{{ nearHiyari(0.05) }}</p>
 
 
                 <button @click="stopDrive">ドライブをやめる</button>
