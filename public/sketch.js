@@ -60,7 +60,8 @@ function isCoinExist() {
 // loop
 
 // let speed = vm ? vm.speed : 50000;
-let isRendering = true;
+
+// let isRendering = true;
 
 (function renderLoop() {
     requestAnimationFrame(renderLoop);
@@ -76,21 +77,24 @@ let isRendering = true;
     } else {
         coin.position.z += (50000) * 0.0005556;
     }
+
     // spawnTimer--;
-    if (!isRendering) return;
+
+    // if (!isRendering) return;
+
     renderer.render(scene, camera);
 })();
 
-function renderStop() {
-    isRendering = false;
-    renderer.domElement.style.display = 'hidden';
-}
+// function renderStop() {
+//     isRendering = false;
+//     renderer.domElement.style.display = 'hidden';
+// }
 
-function renderStart() {
-    isRendering = true;
-    renderer.domElement.style.display = 'display';
-    renderLoop();
-}
+// function renderStart() {
+//     isRendering = true;
+//     renderer.domElement.style.display = 'display';
+//     renderLoop();
+// }
 
 //------------------------------------------------------
 // functions
