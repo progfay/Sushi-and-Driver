@@ -49,22 +49,7 @@ $(function() {
         }
     }
 
-    $('#player').css({
-      width: mw,
-      height: mh,
-      marginTop: (h - mh)/2,
-      marginLeft: (w - mw)/2
-    });
-
-
   $(window).resize(resizeMovie);
-
-  function onPlayerReady(event) {
-    $('#loader').delay(2500).animate({"opacity":0}, 800, "swing", function() {
-      $(this).css('display', 'none');
-    });
-    event.target.mute();
-  }
 
   var onYouTubeIframeAPIReady = function () {
     player = new YT.Player('player', {
