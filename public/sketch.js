@@ -2,11 +2,11 @@
 // var frameCount = 0;
 
 //------------------------------------------------------
-//car
+// car
 var speed = 50;
 
 //------------------------------------------------------
-//scene
+// scene
 var scene = new THREE.Scene();
 
 var $w = $(window),
@@ -39,24 +39,15 @@ directionalLight.position.set(0, 0.7, 0.7);
 scene.add(directionalLight);
 
 //------------------------------------------------------
-//meshes
-// var coins = [];
+// meshes
 
 var coin = null;
 var spawnTimer;
 const SPAWN_COUNT = 250;
 
 function addCoin() {
-    // var coinMesh = getCoinMesh(getRandomInt(-30, 30), getRandomInt(-30, 30), -500);
-    // scene.add(coinMesh);
-    // var coin = {
-    //     coinMesh: coinMesh,
-    //     available: true
-    // }
-    // coins.push(coin);
-
     coin = getCoinMesh(getRandomInt(-30, 30), getRandomInt(-30, 30), -500);
-    scene.add(coinMesh);
+    scene.add(coin);
 }
 
 function foundCoin() {
@@ -65,36 +56,18 @@ function foundCoin() {
     spawnTimer = SPAWN_COUNT;
 }
 
-function isCoinexist(){
+function isCoinExist() {
     return !!coin;
 }
-
-// setInterval(addCoin, 1000);
 
 //------------------------------------------------------
 //loop
 (function renderLoop() {
     requestAnimationFrame(renderLoop);
-    // frameCount++;
-    // if (frameCount % 10 == 0) {
-    //     speed = getRandomInt(30, 200);
-    // }
-    // for (var i = coins.length - 1; i >= 0; i--) {
-    //     coins[i].coinMesh.position.z += speed * 0.02; // .000005556
-    //     if (coins[i].available && coins[i].coinMesh.position.z >= 50) {
-    //         coins[i].available = false;
-    //     }
-
-    //     if (!coins[i].available) {
-    //         scene.remove(coins[i].coinMesh);
-    //         coins.splice(i, 1);
-    //     }
-    // }
-
-    coins[i].coinMesh.position.z += vm.speed * 0.000005556;
     if (!coin) {
         if (spawnTimer <= 0) addCoin();
-    } else if (coins[i].coinMesh.position.z >= 50) {
+    } else if (coin.position.z >= 50) {
+        coin.position.z += vm.speed * 0.000005556;
         scene.remove(coin);
         coin = null;
         spawnTimer = (SPAWN_COUNT * 0.2);
