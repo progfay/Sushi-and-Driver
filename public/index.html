@@ -40,7 +40,10 @@
             <div v-if="!isDriving">
                 <p>your name is {{ user.name }}</p>
                 <p>coins : {{ user.coins }}</p>
-                <p v-for="(value, key) in user.sushi"> {{ key }} を {{ value }} 個</p>
+                <p v-for="(value, key) in user.sushi"> 
+                    <img :src="value.url" alt="" width="100px">
+                    {{ key }} を {{ value.count }} 個
+                </p>
 
                 <button @click="startDrive">ドライブを開始する</button>
                 <button @click="getCoin">コインをゲット</button>
