@@ -56,6 +56,10 @@ function foundCoin() {
     spawnTimer = SPAWN_COUNT;
 }
 
+function isCoinExist() {
+    return !!coin;
+}
+
 //------------------------------------------------------
 //loop
 (function renderLoop() {
