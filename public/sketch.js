@@ -53,35 +53,37 @@ function foundCoin() {
 
 function isCoinExist() {
     // return !!coin;
-    return coin.position.z >= 5;
+    return coin.position.z <= 5;
 }
 
 //------------------------------------------------------
 // loop
 
 // let isRendering = true;
+
+let carSpeed = 0;
+
 let beforeHiyari = 0;
 let beforeAttendance = 100;
 
 (function renderLoop() {
     requestAnimationFrame(renderLoop);
 
-    var hiyariNum = vm.nearHiyari(0.05);
-    let attendance = vm.car.attentiveness;
+    //var hiyariNum = vm.nearHiyari(0.05);
+    //let attendance = vm.car.attentiveness;
     // if (!coin || coin.position.z >= 300) addCoin();
     // || hiyariNum - beforeHiyari > 0 || beforeAttendance <= 20
 
-    if (!coin || coin.position.z >= 100) {
+    if (!coin || coin.position.z >= 200) {
         addCoin();
     }
-    coin.position.z += (50000) * 0.0005556;
+    coin.position.z += 10000 * 0.0005556;
 
 
 
     // beforeHiyari = hiyariNum;
     // beforeAttendance = vm.car.attentiveness;
     // coin.position.z += 50000 * 0.00005556;
-    console.log(coin.position.z);
 
     // spawnTimer--;
 

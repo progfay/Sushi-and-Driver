@@ -1,7 +1,4 @@
 
-let resizeMovieExp = () => null;
-
-
 $(function() {
     var player;
 

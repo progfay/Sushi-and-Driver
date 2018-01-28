@@ -58,30 +58,6 @@ let vm = new Vue({
             }).catch( err => {
                 console.log(err);
             });
-
-        vias.connect( () => {
-            vias.subscribe(VSS_SPEED, val => {
-                    this.car.speed = val;
-                }, err => { console.log(err);
-            });
-            vias.subscribe(GPS_LATITUDE, val => {
-                    this.car.lat = val;
-                }, err => { console.log(err);
-            });
-            vias.subscribe(GPS_LONGITUDE, val => {
-                    this.car.lon = val;
-                }, err => { console.log(err);
-            });
-
-            vias.subscribe(DRV_ATTENTIVENESS, val => {
-                    this.car.attentiveness = val;
-                }, err =>  { console.log(err);
-            });
-              },
-              (_err) => {
-                // Connect error
-                err => {console.log(err)};
-            });
         
     },
     methods : {
@@ -151,7 +127,7 @@ let vm = new Vue({
 
             hiyariPoints = hiyari.result.list.filter( pos => (pos.latitude > lat - 0.5 &&  pos.latitude < lat + 0.5 && pos.longitude > lon - 0.5 && pos.longitude < lon + 0.5));
             console.log(hiyariPoints);
-            resizeMovieExp();
+            //resizeMovieExp();
             this.isDriving = true;
         },
         stopDrive(){
