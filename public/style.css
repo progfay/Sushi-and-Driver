@@ -2,6 +2,64 @@
     visibility : hidden;
 }
 
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-text-size-adjust: 100%;
+    background: #dd7777;
+    font-family: arial;
+    text-align: center;
+}
+
+#field {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    z-index: 50;
+}
+
+#wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+}
+
+#player {
+    position: absolute;
+    z-index: 0;
+}
+
+#player_cover {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}
+
+#loader {
+    background: #000 url("http://jsrun.it/assets/K/1/9/U/K19UZ.gif") no-repeat center center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
 
 head{
     border-radius:10px;
@@ -11,11 +69,6 @@ header{
     margin-right:20%;
     margin-left:20%;
     border-radius:10px;
-}
-
-body{
-  font-family: arial;
-  text-align: center;
 }
 
 h1{
