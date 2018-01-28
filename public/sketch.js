@@ -47,7 +47,7 @@ const SPAWN_COUNT = 250;
 
 function addCoin() {
     coin = getCoinMesh(getRandomInt(-30, 30), getRandomInt(-30, 30), -500);
-    scene.add(coinMesh);
+    scene.add(coin);
 }
 
 function foundCoin() {
@@ -60,10 +60,10 @@ function foundCoin() {
 //loop
 (function renderLoop() {
     requestAnimationFrame(renderLoop);
-    coins[i].coinMesh.position.z += vm.speed * 0.000005556;
     if (!coin) {
         if (spawnTimer <= 0) addCoin();
-    } else if (coins[i].coinMesh.position.z >= 50) {
+    } else if (coin.position.z >= 50) {
+        coin.position.z += vm.speed * 0.000005556;
         scene.remove(coin);
         coin = null;
         spawnTimer = (SPAWN_COUNT * 0.2);
