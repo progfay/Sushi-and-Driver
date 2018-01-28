@@ -87,8 +87,7 @@ function foundCoin() {
     //     }
     // }
 
-    speed = 1000000000000;
-    coins[i].coinMesh.position.z += speed * 0.000005556;
+    coins[i].coinMesh.position.z += vm.speed * 0.000005556;
     if (!coin) {
         if (spawnTimer <= 0) addCoin();
     } else if (coins[i].coinMesh.position.z >= 50) {
