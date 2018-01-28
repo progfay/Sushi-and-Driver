@@ -39,7 +39,7 @@ var coin = null;
 
 function addCoin() {
     if (coin) scene.remove(coin);
-    coin = getCoinMesh(getRandomInt(-width / 4, width / 4), getRandomInt(-height / 4, height / 4), -10000);
+    coin = getCoinMesh(getRandomInt(-width / 4, width / 4), getRandomInt(-height / 4, height / 4), -1000);
     scene.add(coin);
 }
 
@@ -59,24 +59,29 @@ function isCoinExist() {
 //------------------------------------------------------
 // loop
 
-// let speed = vm ? vm.speed : 50000;
-
 // let isRendering = true;
+let beforeHiyari = 0;
+let beforeAttendance = 100;
 
 (function renderLoop() {
     requestAnimationFrame(renderLoop);
-    if (!coin) {
+
+    var hiyariNum = vm.nearHiyari(0.05);
+    let attendance = vm.car.attentiveness;
+    // if (!coin || coin.position.z >= 300) addCoin();
+    // || hiyariNum - beforeHiyari > 0 || beforeAttendance <= 20
+
+    if (!coin || coin.position.z >= 100) {
         addCoin();
-        // if (spawnTimer <= 0) addCoin();
-        // } else if (coin.position.z >= 10) {
-    } else if (coin.position.z >= 100) {
-        addCoin();
-        // scene.remove(coin);
-        // coin = null;
-        // spawnTimer = (SPAWN_COUNT * 0.2);
-    } else {
-        coin.position.z += (50000) * 0.0005556;
     }
+    coin.position.z += (50000) * 0.0005556;
+
+
+
+    // beforeHiyari = hiyariNum;
+    // beforeAttendance = vm.car.attentiveness;
+    // coin.position.z += 50000 * 0.00005556;
+    console.log(coin.position.z);
 
     // spawnTimer--;
 
