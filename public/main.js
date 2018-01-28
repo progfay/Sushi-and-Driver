@@ -1,9 +1,10 @@
 console.log(hiyari);
 
 
-const VSS_SPEED  = 'Signal.Drivetrain.Transmission.Speed',
+const VSS_SPEED     = 'Signal.Drivetrain.Transmission.Speed',
       GPS_LATITUDE  = 'Signal.Cabin.Infortainment.Navigation.Currentlocation.Latitude',
       GPS_LONGITUDE = 'Signal.Cabin.Infortainment.Navigation.Currentlocation.Longitude',
+      DRV_ATTENTIVENESS = 'Private.Signal.Driver.Attentiveness',
       VISS_IP    = '52.200.145.70',
       VISS_PORT  = '3001',
       ROOM_ID    = 'Turtle';
@@ -33,7 +34,9 @@ let vm = new Vue({
         },
         car : {
             lat : 0,
-            lon : 0
+            lon : 0,
+            speed : 0,
+            attentiveness : 0,
         },
         loginData : {
             name : "",
@@ -68,6 +71,11 @@ let vm = new Vue({
             vias.subscribe(GPS_LONGITUDE, val => {
                     this.car.lon = val;
                 }, err => { console.log(err);
+            });
+
+            vias.subscribe(DRV_ATTENTIVENESS, val => {
+                    this.car.attentiveness = val;
+                }, err =>  { console.log(err);
             });
               },
               (_err) => {

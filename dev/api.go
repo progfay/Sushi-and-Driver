@@ -99,11 +99,11 @@ func gainSushi(c echo.Context) error {
 		return err
 	}
 
-	if user.Coins < 5 {
+	if user.Coins < 1 {
 		return c.JSON(http.StatusOK, user)
 	}
 
-	coins := user.Coins - 5
+	coins := user.Coins - 1
 	rand.Seed(time.Now().Unix())
 	sushi := sushiList[rand.Intn(len(sushiList))]
 	num := user.Sushi[sushi.Name].Count + 1
