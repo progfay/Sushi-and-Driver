@@ -68,7 +68,7 @@ func signup(c echo.Context) error {
 		Name:     ld.Name,
 		Password: ld.Password,
 		Coins:    0,
-		Sushi:    make(map[string]int),
+		Sushi:    make(map[string]OwnSushi),
 	}
 
 	userCol := db.C("user")
