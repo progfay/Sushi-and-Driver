@@ -42,11 +42,12 @@ scene.add(directionalLight);
 // meshes
 
 var coin = null;
-var spawnTimer;
-const SPAWN_COUNT = 250;
+var spawnTimer = 5;
+const SPAWN_COUNT = 5;
 
 function addCoin() {
-    coin = getCoinMesh(getRandomInt(-30, 30), getRandomInt(-30, 30), -500);
+    console.log("add coin");
+    coin = getCoinMesh(getRandomInt(-width / 4, width / 4), getRandomInt(-height / 4, height / 4), -10000);
     scene.add(coin);
 }
 
@@ -62,33 +63,32 @@ function isCoinExist() {
 
 //------------------------------------------------------
 //loop
+
 (function renderLoop() {
     requestAnimationFrame(renderLoop);
     if (!coin) {
         if (spawnTimer <= 0) addCoin();
     } else if (coin.position.z >= 50) {
-        coin.position.z += vm.speed * 0.000005556;
         scene.remove(coin);
         coin = null;
         spawnTimer = (SPAWN_COUNT * 0.2);
+    } else {
+        coin.position.z += speed * 0.0005556;
     }
-
+    spawnTimer--;
     renderer.render(scene, camera);
 })();
 
 //------------------------------------------------------
-//functions
-function getCoinMesh(x, y, z) {
-    var coinTexture = new THREE.TextureLoader().load('./img/coin.png');
-    var coinMaterial = new THREE.MeshPhongMaterial({ map: coinTexture });
-    var coinGeometry = new THREE.CylinderGeometry(6, 6, 1, 128);
-    for (var i = 0; i < coinGeometry.faces.length - coinGeometry.parameters.radialSegments * 2; i++) {
-        coinGeometry.faces[i].materialIndex = 0;
-    }
-    for (var i = coinGeometry.faces.length - coinGeometry.parameters.radialSegments * 2; i < coinGeometry.faces.length; i++) {
-        coinGeometry.faces[i].materialIndex = 1;
-    }
+// functions
+// var texloader = new THREE.TextureLoader();
+// texloader.crossOrigin = 'anonymous';
+// var coinTexture = texloader.load('./coin.png');
+//var coinMaterial = new THREE.MeshPhongMaterial({ map: coinTexture });
+var coinMaterial = new THREE.MeshPhongMaterial({ color: 0xFFFF00 });
+var coinGeometry = new THREE.CylinderGeometry(6, 6, 1, 128);
 
+function getCoinMesh(x, y, z) {
     var mesh = new THREE.Mesh(coinGeometry, coinMaterial);
     mesh.position.set(x, y, z);
     mesh.rotation.set(THREE.Math.degToRad(90), 0, 0);
