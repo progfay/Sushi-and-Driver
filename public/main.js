@@ -143,6 +143,7 @@ let vm = new Vue({
 
             hiyariPoints = hiyari.result.list.filter( pos => (pos.latitude > lat - 0.5 &&  pos.latitude < lat + 0.5 && pos.longitude > lon - 0.5 && pos.longitude < lon + 0.5));
             console.log(hiyariPoints);
+            resizeMovieExp();
             this.isDriving = true;
         },
         stopDrive(){

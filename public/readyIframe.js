@@ -1,9 +1,13 @@
+
+let resizeMovieExp = () => null;
+
+
 $(function() {
     var player;
 
     $('body').append('<script src="https://www.youtube.com/iframe_api">');
 
-    function resizeMovie() {
+    let resizeMovie = () => {
         var $w = $(window),
             bw = 1200,
             bh = (bw / 16) * 9,
@@ -25,9 +29,9 @@ $(function() {
             marginTop: (h - mh) / 2,
             marginLeft: (w - mw) / 2
         });
-
     }
 
+    resizeMovieExp = resizeMovie;
     resizeMovie();
 
     $(window).resize(resizeMovie);

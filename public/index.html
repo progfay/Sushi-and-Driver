@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/public/style.css">
     <title>🍣 and Driver</title>
-
+    
 </head>
 
 <body>
     <div id="app" v-cloak>
         <div id="login" v-if="!isLogin">
-                <header>
-                        <h1>
-                            <img src="/public/img/coin.png" class="header"> Sushi and Driver
-                        </h1>
-                 <img src="http://stockmaterial.geo.jp/wp/wp-content/uploads/img/other_coin01.jpg" class="title">
+            <header>
+                <h1>
+                    <img src="/public/img/coin.png" class="header"> Sushi and Driver
+                </h1>
+            <img src="http://stockmaterial.geo.jp/wp/wp-content/uploads/img/other_coin01.jpg" class="title">
             </header>
             <h1>Sushi and Driver</h1>
                 <h2>log in</h2>
@@ -51,14 +51,16 @@
                 <button @click="logout">logout</button>
             </div>
 
-            <div v-if="isDriving">
-                <p> 0.001 10メートル範囲  {{ nearHiyari(0.001) }}</p>
-                <p> 0.005 50メートル範囲  {{ nearHiyari(0.005) }}</p>
-                <p> 0.010 100メートル範囲 {{ nearHiyari(0.01) }}</p>
-                <p> 0.050 500メートル範囲　{{ nearHiyari(0.05) }}</p>
+            <div id="driving" v-show="isDriving">
+                <div id="field"></div>
+                <div id="wrapper">
+                    <div id="player"></div>
+                    <div id="player_cover">
+                        <div id="loader"></div>
+                    </div>
+                </div>
 
-
-                <button @click="stopDrive">ドライブをやめる</button>
+                <!-- <button @click="stopDrive">ドライブをやめる</button> -->
             </div>
         </div>
     </div>
@@ -67,7 +69,11 @@
     <script src="/public/lib/vue.min.js"></script>
     <script src="/public/js/vias_h2018.js"></script>
     <script src="/public/lib/speech.js"></script>
+    <script src="/public/lib/jquery.min.js"></script>
+    <script src="/public/lib/three.min.js"></script>
+    <script src="/public/sketch.js"></script>
     <script src="/public/main.js"></script>
+    <script src="/public/readyIframe.js"></script>
+    
 </body>
-
 </html>
