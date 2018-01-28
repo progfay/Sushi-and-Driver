@@ -1,9 +1,13 @@
+
+let resizeMovieExp = () => null;
+
+
 $(function() {
     var player;
 
     $('body').append('<script src="https://www.youtube.com/iframe_api">');
 
-    function resizeMovie() {
+    let resizeMovie = () => {
         var $w = $(window),
             bw = 1200,
             bh = (bw / 16) * 9,
@@ -25,9 +29,9 @@ $(function() {
             marginTop: (h - mh) / 2,
             marginLeft: (w - mw) / 2
         });
-
     }
 
+    resizeMovieExp = resizeMovie;
     resizeMovie();
 
     $(window).resize(resizeMovie);
@@ -45,24 +49,25 @@ $(function() {
         }
     }
 
-    var onYouTubeIframeAPIReady = function() {
-        player = new YT.Player('player', {
-            videoId: 'L5PIA_7OLIQ',
-            playerVars: {
-                'autoplay': 1,
-                'controls': 0,
-                'enablejsapi': 1,
-                'iv_load_policy': 3,
-                'disablekb': 1,
-                'showinfo': 0,
-                'rel': 0,
-                'start': 5
-            },
-            events: {
-                'onReady': onPlayerReady,
-                'onStateChange': onPlayerStateChange
-            }
-        });
-    };
-    window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
+  $(window).resize(resizeMovie);
+
+  var onYouTubeIframeAPIReady = function () {
+    player = new YT.Player('player', {
+      videoId: 'L5PIA_7OLIQ',
+      playerVars: {
+        'autoplay': 1,
+        'controls': 0,
+        'enablejsapi': 1,
+        'iv_load_policy': 3,
+        'disablekb':1,
+        'showinfo':0,
+        'rel':0,
+        'start': 0
+      },
+      events: {
+        'onReady': onPlayerReady
+      }
+    });
+  };
+  window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
 });

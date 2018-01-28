@@ -1,10 +1,3 @@
-//System
-// var frameCount = 0;
-
-//------------------------------------------------------
-// car
-
-//------------------------------------------------------
 // scene
 var scene = new THREE.Scene();
 
@@ -41,47 +34,55 @@ scene.add(directionalLight);
 // meshes
 
 var coin = null;
-var spawnTimer = 5;
-const SPAWN_COUNT = 5;
 
 function addCoin() {
-    console.log("add coin");
+    if (coin) scene.remove(coin);
     coin = getCoinMesh(getRandomInt(-width / 4, width / 4), getRandomInt(-height / 4, height / 4), -10000);
     scene.add(coin);
 }
 
 function foundCoin() {
-    if (!coin) return;
-    coin = null;
-    spawnTimer = SPAWN_COUNT;
+    coin.position.z = 5;
 }
 
 function isCoinExist() {
-    return !!coin;
+    return coin.position.z >= 5;
 }
 
 //------------------------------------------------------
-//loop
+// loop
 
-let speed = 50000;
+// let isRendering = true;
+let beforeHiyari = 0;
+let beforeAttendance = 0;
 
 (function renderLoop() {
     requestAnimationFrame(renderLoop);
-    if (!coin) {
-        if (spawnTimer <= 0) addCoin();
-    } else if (coin.position.z >= 50) {
-        scene.remove(coin);
-        coin = null;
-        spawnTimer = (SPAWN_COUNT * 0.2);
-    } else {
-        coin.position.z += speed * 0.0005556;
-    }
-    spawnTimer--;
+
+    let hiyariNum = vm.nearHiyari(0.05);
+    let attendance = 100;
+    if (!coin || coin.position.z >= 300 || hiyariNum - beforeHiyari > 0 || beforeAttendance <= 20) addCoin();
+
+    beforeHiyari = hiyariNum;
+    beforeAttendance = attendance;
+    coin.position.z += (50000) * 0.0005556;
     renderer.render(scene, camera);
 })();
 
+// function renderStop() {
+//     isRendering = false;
+//     renderer.domElement.style.display = 'hidden';
+// }
+
+// function renderStart() {
+//     isRendering = true;
+//     renderer.domElement.style.display = 'display';
+//     renderLoop();
+// }
+
 //------------------------------------------------------
 // functions
+
 // var texloader = new THREE.TextureLoader();
 // texloader.crossOrigin = 'anonymous';
 // var coinTexture = texloader.load('./coin.png');
