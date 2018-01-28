@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Tes</title>
-    <script src="./lib/jquery.min.js"></script>
-    <script src="./lib/three.min.js"></script>
+    <title>Driving</title>
+    <script src="/public/lib/jquery.min.js"></script>
+    <script src="/public/lib/three.min.js"></script>
     <style>
         html {
             width: 100%;
@@ -57,24 +57,45 @@
         #loader {
             background: #000 url("http://jsrun.it/assets/K/1/9/U/K19UZ.gif") no-repeat center center;
             position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
+            top    : 0;
+            right  : 0;
+            bottom : 0;
+            left   : 0;
         }
     </style>
-    <script src="./readyIframe.js"></script>
+    <script src="/public/readyIframe.js"></script>
 </head>
 
 <body>
-    <div id="field"></div>
+
+    <div id="field" onclick="window.location.href = '/'"></div>
     <div id="wrapper">
         <div id="player"></div>
         <div id="player_cover">
             <div id="loader"></div>
         </div>
     </div>
-    <script src="./sketch.js"></script>
+    <script src="/public/sketch.js"></script>
+    <script src="/public/hiyari.js"></script>
+    <script src="/public/lib/axios.min.js"></script>
+    <script src="/public/lib/vue.min.js"></script>
+    <script src="/public/js/vias_h2018.js"></script>
+    <script src="/public/lib/speech.js"></script>
+    <script src="/public/lib/jquery.min.js"></script>
+    <script src="/public/lib/three.min.js"></script>
+    <script src="/public/readyIframe.js"></script>
+    <script src="/public/main.js"></script>
+    <script>
+        setTimeout(()=>{
+        vm.startDrive();
+    }, 10000);
+
+    setInterval(()=>{
+        console.log(vm.car.lon);
+        console.log(vm.car.lat);
+        console.log(vm.car.speed);
+    },100)
+    </script>
 </body>
 
 </html>

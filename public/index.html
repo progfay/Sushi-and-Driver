@@ -37,7 +37,7 @@
         </div>
 
         <div id="home" v-if="isLogin">
-            <div v-if="!isDriving">
+            <div id="gatya" v-if="!isDriving">
                 <p>your name is {{ user.name }}</p>
                 <p>coins : {{ user.coins }}</p>
                 <p v-for="(value, key) in user.sushi"> 
@@ -45,14 +45,14 @@
                     {{ key }} を {{ value.count }} 個
                 </p>
 
-                <button @click="startDrive">ドライブを開始する</button>
+                <button @click="window.location.href = '/api/driving'">ドライブを開始する</button>
                 <button @click="getCoin">コインをゲット</button>
                 <button @click="getSushi">寿司を握る(５コイン消費)</button>
                 <button @click="logout">logout</button>
             </div>
 
-            <div id="driving" v-show="isDriving">
-                <div id="field"></div>
+            <!-- <div id="driving" v-show="isDriving">
+                <div id="field" @click="stopDrive"></div>
                 <div id="wrapper">
                     <div id="player"></div>
                     <div id="player_cover">
@@ -60,8 +60,8 @@
                     </div>
                 </div>
 
-                <!-- <button @click="stopDrive">ドライブをやめる</button> -->
-            </div>
+                
+            </div> -->
         </div>
     </div>
     <script src="/public/hiyari.js"></script>
@@ -72,8 +72,8 @@
     <script src="/public/lib/jquery.min.js"></script>
     <script src="/public/lib/three.min.js"></script>
     <script src="/public/sketch.js"></script>
-    <script src="/public/main.js"></script>
     <script src="/public/readyIframe.js"></script>
+    <script src="/public/main.js"></script>
     
 </body>
 </html>

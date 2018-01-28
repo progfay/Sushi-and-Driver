@@ -72,8 +72,8 @@ let vm = new Vue({
               },
               (_err) => {
                 // Connect error
-                document.getElementById("VehicleSpeed").innerHTML = "connection error";
-              });
+                err => {console.log(err)};
+            });
         
     },
     methods : {

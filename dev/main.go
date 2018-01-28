@@ -39,6 +39,7 @@ func main() {
 	api.Use(middleware.JWT([]byte(SECRET_KEY)))
 	api.GET("/user", getUser)
 	api.PUT("/coin", gainCoin)
+	api.File("/driving", "../public/sketch.html")
 	api.PUT("/sushi", gainSushi)
 
 	// start server

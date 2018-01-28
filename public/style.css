@@ -41,9 +41,12 @@ body {
 }
 
 
+#login{
+    text-align : center;
+}
 
 #wrapper {
-    position: absolute;
+    /* position: absolute; */
     top: 0;
     left: 0;
     width: 100%;
@@ -96,6 +99,10 @@ h2{
     color:#00b0f0;
 }
 
+#gatya{
+    text-align : center;
+}
+
 
 img.header{
     width:30px;
@@ -145,3 +152,4 @@ hr{
      margin-bottom:0px; 
      border: 0;
 }
+
