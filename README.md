@@ -1,20 +1,25 @@
 # 🍣ドラ
 
+[Webと車のハッカソン 2018](https://rp.kddi-research.jp/hackathon) にて制作・発表。
+
+
+
 ## 背景
 
 自動運転が発達してきた
-自動運転レベルが5になるのは遠い
-http://www.itmedia.co.jp/news/articles/1712/01/news100.html
+自動運転レベルが5になるのは遠い ([参考 : 「自動運転レベル」の果たす役割とその弊害](http://www.itmedia.co.jp/news/articles/1712/01/news100.html))
 レベル3になると人と車の役割が半々になる
 人間は危険察知能力が高い画像処理システム
 
 自動運転時に暇になるだろう
 
 
+
 ## 問題
 
 退屈してしまうから周りを注意しなくなってくると予想される
 人が運転した方がよい緊急時の運転への切換が遅れてしまうだろう
+
 
 
 ## 提案
@@ -24,14 +29,8 @@ http://www.itmedia.co.jp/news/articles/1712/01/news100.html
 ガチャにはあまり意味合いを持たせず、コミュニケーションやSNSを用いて共有できる程度のものとする
 
 
-## 手法
-
-- 視線API (JINS MEME) を使用する
-- Three.jsを用いてコインを配置
-  - あまり目立たないようなコインにしたい
-
 
 _____
 
-bin_for_macかbin_for_winを起動すると localhost:1323で試せます。  
+`bin_for_mac` か `bin_for_win` を起動すると http://localhost:1323 で試せます。  
 ただし、DBに使っているmongoDBをインストールして起動する必要あり
